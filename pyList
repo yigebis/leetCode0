@@ -1,0 +1,19 @@
+if __name__ == '__main__':
+    N = int(input())
+    myList = []
+    for i in range(N):
+        s = input()
+        if s[0:6] == "insert":
+            myList.insert(int(s[7]), int(s[9:]))
+        elif s[0:5] == "print":
+            print(myList)
+        elif s[0:6] == "remove":
+            myList.remove(int(s[7:]))
+        elif s[0:6] == "append":
+            myList.append(int(s[7:]))
+        elif s[0:4] == "sort":
+            myList.sort()
+        elif s[0:3] == "pop":
+            myList.pop()
+        elif s[0:7] == "reverse":
+            myList.reverse()
