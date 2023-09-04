@@ -1,0 +1,25 @@
+class Solution {
+public:
+    bool judgeSquareSum(long int c) {
+        if (c == 0 || c == 1)
+        {
+            return true;
+        }
+        long int ptr1 = 0;
+        long int ptr2 = int(sqrt(c));
+        while(ptr1 <= ptr2)
+        {
+            if(ptr1*ptr1 + ptr2*ptr2 < c)
+            {
+                ptr1++;
+            }
+            else if (ptr1*ptr1 + ptr2*ptr2 > c)
+            {
+                ptr2--;
+            }
+            else
+            return true;
+        }
+        return false;
+    }
+};
