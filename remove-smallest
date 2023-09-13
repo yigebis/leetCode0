@@ -1,0 +1,38 @@
+#include <iostream> 
+#include <algorithm>
+#include <vector>
+using namespace std;
+ 
+ 
+int main()
+{
+    int val;
+    int t;
+    int n;
+    cin>>t;
+    vector<int> list;
+    bool status = true;
+    for (int i = 0; i < t; i++)
+    {
+        cin>>n;
+        for (int j = 0; j < n; j++)
+        {
+            cin>>val;
+            list.push_back(val);
+        }
+        sort(list.begin(), list.end());
+        for (int i = 0; i < n - 1; i++)
+        {
+            if(list[i+1] - list[i] > 1)
+            {
+                status = false;
+                break;
+            }
+        }
+        if(status) cout<<"YES"<<endl;
+        else cout<<"NO"<<endl;
+        status = true;
+        list.clear();
+    }
+    return 0;
+}
