@@ -1,0 +1,51 @@
+class Solution {
+public:
+    ListNode* reverse(ListNode* head)
+    {
+        ListNode* prev = NULL, *curr = head, *nxt = curr -> next;
+        while (nxt)
+        {
+            curr -> next = prev;
+            prev = curr;
+            curr = nxt;
+            nxt = nxt -> next;
+        }
+        curr -> next = prev;
+        return curr;
+    }
+    bool isPalindrome(ListNode* head)
+    {
+        // vector<int> nums;
+        // while (head)
+        // {
+        //     nums.push_back(head->val);
+        //     head = head->next;
+        // }
+        // int l = 0, r = nums.size() - 1;
+        // while (l <= r)
+        // {
+        //     if (nums[l] != nums[r])
+        //     return false;
+        //     l++;
+        //     r--;
+        // }
+        // return true;
+        ListNode* slow = head, *fast = head;
+        while (fast && fast -> next)
+        {
+            fast = fast -> next -> next;
+            slow = slow -> next;
+        }
+        slow = reverse(slow);
+        while (slow)
+        {
+            if (slow -> val != head -> val)
+            return false;
+            slow = slow -> next;
+            head = head -> next;
+        }
+        return true;
+
+    }
+    
+};
