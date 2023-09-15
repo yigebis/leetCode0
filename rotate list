@@ -1,0 +1,29 @@
+class Solution {
+public:
+    ListNode* rotateRight(ListNode* head, int k) {
+        if (!head) return NULL;
+        ListNode* curr = head;
+        int counter = 0, total = 1;
+        while (curr -> next)
+        {
+            curr = curr -> next;
+            total++;
+        }
+        //5 - 2 = 3
+        curr -> next = head;
+        while (curr)
+        {
+            curr = curr -> next;
+            counter++;
+            if (total - (k % total) == counter)
+            {
+                head = curr -> next;
+                curr -> next = NULL;
+                break;
+            }
+            
+        }
+        return head;
+
+    }
+};
