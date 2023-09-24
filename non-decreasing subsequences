@@ -1,0 +1,16 @@
+class Solution:
+    def findSubsequences(self, nums: List[int]) -> List[List[int]]:
+        ans = []
+        N = len(nums)
+        def backtrack(start, l):
+            if len(l) >= 2 and l not in ans:
+                ans.append(l.copy())
+            if start == N + 1:
+                return
+            for i in range(start, len(nums)):
+                if not l or nums[i] >= l[-1]:
+                    l.append(nums[i])
+                    backtrack(i + 1, l)
+                    if l: l.pop()
+        backtrack(0, [])
+        return ans
