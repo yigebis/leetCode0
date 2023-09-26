@@ -1,0 +1,25 @@
+class Solution:
+    l = []
+    def found(self, r: str, s: set()):
+        prev = []
+        for i in r:
+            if i in s or i in prev:
+                return True
+            prev.append(i)
+        return False
+    ans = 0
+    def maxLength(self, arr: List[str]) -> int:
+        letters = set()
+        def backtrack(start, size):
+            self.ans = max(self.ans, size)
+            for i in range(start, len(arr)):
+                if not self.found(arr[i], letters):
+                    size += len(arr[i])
+                    for p in arr[i]:
+                        letters.add(p)
+                    backtrack(i + 1, size)
+                    size -= len(arr[i])
+                    for p in arr[i]:
+                        letters.remove(p)
+        backtrack(0,0)
+        return self.ans
