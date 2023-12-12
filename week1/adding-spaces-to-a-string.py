@@ -1,0 +1,10 @@
+class Solution:
+    def addSpaces(self, s: str, spaces: List[int]) -> str:
+        output = ""
+        init = 0
+        for t in range(len(spaces)):
+            output += s[init : spaces[t]] + " "
+            init = spaces[t]
+        output += s[init : ]
+        return output
+            
