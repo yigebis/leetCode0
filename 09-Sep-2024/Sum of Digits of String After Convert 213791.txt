@@ -1,0 +1,25 @@
+# Problem: Sum of Digits of String After Convert - https://leetcode.com/problems/sum-of-digits-of-string-after-convert/
+
+class Solution {
+public:
+    int getLucky(string s, int k) {
+        string new_s = "";
+        for (int i = 0; i < s.length(); i++){
+            new_s += to_string(s[i] - 'a' + 1);
+        }
+
+        while (new_s.length() > 1 && k > 0){
+            int curr_sum = 0;
+            for (auto ch : new_s){
+                s = "";
+                s += ch;
+                curr_sum += stoi(s);
+            }
+
+            new_s = to_string(curr_sum);
+            k--;
+        }
+
+        return stoi(new_s);
+    }
+};
