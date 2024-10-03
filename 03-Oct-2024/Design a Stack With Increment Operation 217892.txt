@@ -1,0 +1,40 @@
+# Problem: Design a Stack With Increment Operation - https://leetcode.com/problems/design-a-stack-with-increment-operation/
+
+class CustomStack {
+public:
+    int maximum = 0, popped;
+    vector<int> arr;
+    CustomStack(int maxSize) {
+        maximum = maxSize;
+    }
+    
+    void push(int x) {
+        if (arr.size() < maximum)
+        {
+            arr.push_back(x);
+        }
+    }
+    
+    int pop() {
+        if (arr.empty())
+        return -1;
+        popped = arr[arr.size() - 1]; 
+        arr.pop_back();
+        return popped;  
+    }
+    
+    void increment(int k, int val) {
+        for (int i = 0; i < min(k, int(arr.size())); i++)
+        {
+            arr[i] += val;
+        }
+    }
+};
+
+/**
+ * Your CustomStack object will be instantiated and called as such:
+ * CustomStack* obj = new CustomStack(maxSize);
+ * obj->push(x);
+ * int param_2 = obj->pop();
+ * obj->increment(k,val);
+ */
