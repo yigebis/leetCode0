@@ -7,10 +7,8 @@ class Solution:
         if min_cost + max_cost <= costBoth:
             return cost1 * need1 + cost2 * need2
         
-        # if costBoth <= max_cost:
         if need1 < need2:
             return costBoth * need1 + min(costBoth, cost2) * (need2 - need1)
         
         return min(costBoth, cost1) * (need1 - need2) + costBoth * need2
         
-        # return cost1 * need1 + cost2 * need2
